@@ -8,6 +8,11 @@ function tokenForUser(user) {
   // note: sub = subject, iat = issued at time
 }
 
+exports.signin = function(req, res, next) {
+  // At this point user has had their email / pw authed, we just need to give them a token
+  res.send({ token: tokenForUser(req.user) });
+};
+
 exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
